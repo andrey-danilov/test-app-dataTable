@@ -67,7 +67,7 @@ export class UserService {
     });
 
     this.userFilter.filter.forEach(item => {
-      if (!item.value) {
+      if (item.value) {
         switch (item.name) {
           case 'gender': {
             filteredUsers = filteredUsers.filter(x => x.gender === filter.gender);

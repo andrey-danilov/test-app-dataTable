@@ -1,5 +1,5 @@
-<section >
-<ul class="list-unstyled d-flex">
+<section class="py-5">
+<ul class="list-unstyled d-flex justify-content-around">
   <li *ngFor="let filter of userFilter.filter; let index = index">
     <div class="custom-control custom-switch">
       <input [(ngModel)]="filter.value" (change)="changeFilter()" type="checkbox" class="custom-control-input" [id]="index">
