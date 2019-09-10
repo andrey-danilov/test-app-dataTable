@@ -1,0 +1,59 @@
+<section >
+<ul class="list-unstyled d-flex">
+  <li *ngFor="let filter of userFilter.filter; let index = index">
+    <div class="custom-control custom-switch">
+      <input [(ngModel)]="filter.value" (change)="changeFilter()" type="checkbox" class="custom-control-input" [id]="index">
+      <label class="custom-control-label" [for]="index">{{filter.name}} filter</label>
+    </div>
+  </li>
+</ul>
+
+
+<form [formGroup]="filterForm"
+      (ngSubmit)="searchUsers()"
+      class="d-flex justify-content-between align-items-center">
+
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <select matNativeControl
+            formControlName="gender">
+      <option value="male"
+              [selected]="filterForm.controls['gender'].value === 'male'">male</option>
+      <option value="female"
+              [selected]="filterForm.controls['gender'].value === 'female'">female</option>
+    </select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="city"
+           formControlName="city">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="street"
+           formControlName="street">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email"
+           formControlName="email"
+           type="email">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="phone"
+           formControlName="phone">
+  </mat-form-field>
+
+  <div>
+    <button mat-raised-button
+            color="primary"
+            type="submit">Search</button>
+  </div>
+  <div>
+    <button mat-raised-button
+            color="indigo"
+            [disabled]="!isClearFilter"
+            (click)="clearFilter()"
+            type="submit">Clear</button>
+  </div>
+</form>
+
+</section>

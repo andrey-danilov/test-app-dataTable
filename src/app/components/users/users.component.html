@@ -1,0 +1,53 @@
+
+<section class="container">
+  <app-filter-component (searchedUsers)='changeUserList($event)'></app-filter-component>
+</section>
+
+
+<section class="container">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="users"
+    [masterDetail]="{ enabled: true, template: 'detail' }"
+    keyExpr="id"
+    [showBorders]="true">
+
+    <dxo-paging [pageSize]="25"></dxo-paging>
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[10, 20, 50, 100]"
+      [showInfo]="true">
+    </dxo-pager>
+
+
+    <dxi-column dataField="Prefix"
+                [width]="50"
+                caption="Title"></dxi-column>
+
+    <dxi-column dataField="avatar"
+                [allowFiltering]="false"
+                [allowSorting]="false"
+                [width]="150"
+                cellTemplate="cellTemplate"></dxi-column>
+
+    <dxi-column dataField="fullName"></dxi-column>
+
+    <dxi-column dataField="gender"
+                [width]="170"></dxi-column>
+
+    <div *dxTemplate="let data of 'cellTemplate'">
+      <img [src]="data.value"/>
+    </div>
+
+    <div *dxTemplate="let user of 'detail'">
+      <ul class="userInfo list-unstyled d-flex justify-content-around">
+        <li class="userCity">{{user.data.city}}</li>
+        <li class="userStreet">{{user.data.street}}</li>
+        <li class="userEmail">{{user.data.email}}</li>
+      </ul>
+    </div>
+
+
+  </dx-data-grid>
+</section>
+
