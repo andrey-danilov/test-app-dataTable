@@ -14,12 +14,15 @@ import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
+import { SomePageComponent } from './components/some-page/some-page.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    FilterComponentComponent
+    FilterComponentComponent,
+    SomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule
   ],
   providers: [
     httpInterceptorProviders,
